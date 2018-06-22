@@ -8,10 +8,10 @@
 	  
 	<div class="flright">
 		<li class="navItem"><a href="index.php">Home</a></li>
-  		<li class="navItem"><a href="../main/contact.php">Contact</a></li>
-		<li class="navItem"><a href="../main/about.php">About</a></li>
-		<li class="navItem"><a href="../main/contact.php">Register</a></li>
-  		<li class="navItem"><a href="../main/about.php">Login</a></li>
+  		<li class="navItem"><a href="contact.php">Contact</a></li>
+		<li class="navItem"><a href="about.php">About</a></li>
+		<li class="navItem"><a href="register.php">Register</a></li>
+  		<li class="navItem"><a href="login.php">Login</a></li>
 	</div>
 </ul>
 </div>

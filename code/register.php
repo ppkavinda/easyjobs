@@ -20,12 +20,37 @@
                         </div>
                         <div class="textbox-wrap">
                             <div class="input-group">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <input type="text" name="fname" class="form-control " placeholder="First Name" required>
                             </div>
                         </div>
                         <div class="textbox-wrap">
                             <div class="input-group">
-                                <input type="password" name="password" class="form-control " placeholder="Password">
+                                <input type="text" name="lname" class="form-control " placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="number" name="tpno" class="form-control" placeholder="Telephone" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="text"  class="form-control" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="password" class="form-control " placeholder="Password" required>
                             </div>
                         </div>
                      </form>
@@ -33,7 +58,7 @@
 					     <div class="clearfix"> </div>
 			        </div>
 					<div class="login-btn">
-					   <input type="submit" value="Log in">
+					   <input type="submit" name="submit" value="Log in">
 					</div>
 				
                 </div>
