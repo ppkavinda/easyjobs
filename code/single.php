@@ -10,45 +10,87 @@
 
 <?php include('partials/banner.php'); ?>
 
-<div class="container">
-    <div class="single">  
-	   <div class="col-md-4">
-	   	  <div class="col_3">
-	   	  	<h3>Todays Jobs</h3>
-	   	  	<ul class="list_1">
-	   	  		<li><a href="#">LIC Housing Finance Ltd. recruitment for Personal Assistant in Mumbai</a></li>
-	   	  		<li><a href="#">Madurai Kamaraj University recruitment for Research Assistants Econometrics in Madurai</a></li>		
-	   	  		<li><a href="#">LIC Housing Finance Ltd. recruitment for Personal Assistant in Mumbai</a></li>
-	   	  		<li><a href="#">Madurai Kamaraj University recruitment for Research Assistants Econometrics in Madurai</a></li>		
-	   	  		<li><a href="#">LIC Housing Finance Ltd. recruitment for Personal Assistant in Mumbai</a></li>
-	   	  		<li><a href="#">Madurai Kamaraj University recruitment for Research Assistants Econometrics in Madurai</a></li>		
-	   	  		<li><a href="#">LIC Housing Finance Ltd. recruitment for Personal Assistant in Mumbai</a></li>
-	   	  		<li><a href="#">Madurai Kamaraj University recruitment for Research Assistants Econometrics in Madurai</a></li>								
-	   	  	</ul>
-	   	  </div>
-	 </div>
-	 <div class="col-md-8 single_right">
-	      <h3>Sed ut perspiciatis unde omnis iste natus</h3>
-	      <div class="row_1">
-	      	<div class="col-sm-5 single_img">
-	      		<img src="images/a1.jpg" class="img-responsive" alt=""/>
+<div class="SingleContainer">
+    <div class="Single">  
+	 	<div class="titleDiv title_right">
+	      	<h3>Job Title</h3>
+	      	<div class="row_1">
+	      		<div class="divImg Single_img">
+	      			<img src="images/a1.jpg" class="img" alt="job image"/>
+	      		</div>
+	      		<div class="divDescript Single-para">
+	      			<p>
+						  Job Description 
+					</p>	
+	      		</div>
+	      		<div class="clearfix"> </div>
 	      	</div>
-	      	<div class="col-sm-7 single-para">
-	      		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', </p>
-	      		<p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-	      	</div>
-	      	<div class="clearfix"> </div>
-	      </div>
-	      <h5>At vero eos et accusamus et iusto odio dignissimos</h5>
-	      <p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. </p>
-	      <h5>At vero eos et accusamus et iusto odio dignissimos</h5>
-	      <p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. </p>
+	      	<h5>At vero eos et accusamus et iusto odio dignissimos</h5>
+	      	<p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. </p>
+	      	<h5>At vero eos et accusamus et iusto odio dignissimos</h5>
+	      	<p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. </p>
 	   </div>
 	   <div class="clearfix"> </div>
-	 </div>
+	</div>
 </div>
 
 <?php include('partials/footer.php'); ?>
 
 </body>
 </html>	
+
+<style>
+	.SingleContainer{
+		padding-right: 15px;
+  		padding-left: 15px;
+  		margin-right: auto;
+  		margin-left: auto;
+  		width: 1170px;
+	}
+
+	.Single {
+		padding: 5em 0;
+	}
+
+	.titleDiv {
+		width: 75%;
+		position: relative;
+		min-height: 1px;
+		padding-left: 15px;
+		padding-right: 15px;
+		float: left;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.title_right h3{
+		color:#000;
+		font-size:1.5em;
+		font-weight:400;
+		margin-bottom:1em;
+	}
+
+	.divImg{
+		position: relative;
+		min-height: 1px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.Single_img{
+		padding-left:0;
+	}
+
+	.Single-para {
+	    padding: 0;
+	    margin: 1em 0 0 0;
+	}
+
+	.divDescript{
+		position: relative;
+		min-height: 1px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+</style>
