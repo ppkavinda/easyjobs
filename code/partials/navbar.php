@@ -3,11 +3,11 @@
 <div>
 <ul class="navul" id="navBar">
 	<div class="flleft">
-		<li class="navItem title"><a href="../main/index.php"><span class="navHead1">S</span><span class="navHead2">eekers</span></a></li>
+		<li class="navItem title"><a href="index.php"><span class="navHead1">S</span><span class="navHead2">eekers</span></a></li>
 	</div>
 	  
 	<div class="flright">
-		<li class="navItem"><a href="../main/index.php">Home</a></li>
+		<li class="navItem"><a href="index.php">Home</a></li>
   		<li class="navItem"><a href="../main/contact.php">Contact</a></li>
 		<li class="navItem"><a href="../main/about.php">About</a></li>
 		<li class="navItem"><a href="../main/contact.php">Register</a></li>
