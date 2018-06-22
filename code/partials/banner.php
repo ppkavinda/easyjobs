@@ -13,3 +13,14 @@
        </div>
    </div> 
 </div>
+
+<style>
+.banner{
+	background:url(../images/banner.jpg)no-repeat center top;
+	background-size:cover;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    min-height:630px;	
+}
+</style>
