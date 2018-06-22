@@ -87,6 +87,9 @@
 	background:#2185C5;
 	color: #fff;
 }
+.btn-2 input {
+	color: #fff;
+}
 .btn2-1b:after {
 	width: 100%;
 	height: 0;
