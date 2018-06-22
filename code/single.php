@@ -122,6 +122,7 @@
 		position: absolute;
 		margin-top: -385px;
 		margin-left: 400px;
+		font-family: Tahoma, Geneva, sans-serif;
 	}
 
 	ul li{

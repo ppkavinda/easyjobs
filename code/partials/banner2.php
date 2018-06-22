@@ -21,11 +21,12 @@
     min-height:100px;	
 }
 #search_wrapper1{
-	margin-top:3em;
+	margin-top:3em !important;
 }
 #search_wrapper {
-	padding-top:8em;
+	padding-top:5em;
 }
+
 #search_form h1 {
     color: #222f50;
     font-size: 2em;
