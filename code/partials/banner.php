@@ -18,17 +18,14 @@
 .banner{
 	background:url(images/banner.jpg)no-repeat center top;
 	background-size:cover;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
     min-height:630px;	
 }
 #search_wrapper1{
 	margin-top:3em;
 }
-/* #search_wrapper {
-	margin-top:8em;
-} */
+#search_wrapper {
+	padding-top:8em;
+}
 #search_form h1 {
     color: #222f50;
     font-size: 2em;
