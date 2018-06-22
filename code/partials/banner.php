@@ -16,7 +16,7 @@
 
 <style>
 .banner{
-	background:url(../images/banner.jpg)no-repeat center top;
+	background:url(images/banner.jpg)no-repeat center top;
 	background-size:cover;
     -webkit-background-size:cover;
     -moz-background-size:cover;
