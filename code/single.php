@@ -8,7 +8,7 @@
 
 <?php include('partials/navbar.php'); ?>
 
-<?php include('partials/banner.php'); ?>
+<?php include('partials/banner2.php'); ?>
 
 <div class="SingleContainer">
     <div class="Single">  
