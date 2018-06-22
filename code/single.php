@@ -13,23 +13,33 @@
 <div class="SingleContainer">
     <div class="Single">  
 	 	<div class="titleDiv title_right">
-	      	<h3>Job Title</h3>
+	      	<h1>Job Title</h1><br>
 	      	<div class="row_1">
 	      		<div class="divImg Single_img">
 	      			<img src="images/a1.jpg" class="img" alt="job image"/>
-	      		</div>
-	      		<div class="divDescript Single-para">
+				</div>
+				<br><br><br>
+				<h2>Description</h2>
+	      		<div class="Single-para">
 	      			<p>
 						  Job Description 
 					</p>	
-	      		</div>
+				</div>
+				<div class="jobinfo1">
+					<ul>
+						<li>Employer : abv pvt ltd</li><br><br>
+						<li>Sallery : 10000</li><br><br>
+						<li>Location : kanaththa</li>
+					</ul>
+				</div>
+				
+				<div class="applybtndiv">
+				<input class="applybtn" type="submit" name="submit" id="" Value="Apply">
+				</div>
+
 	      		<div class="clearfix"> </div>
 	      	</div>
-	      	<h5>At vero eos et accusamus et iusto odio dignissimos</h5>
-	      	<p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. </p>
-	      	<h5>At vero eos et accusamus et iusto odio dignissimos</h5>
-	      	<p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. </p>
-	   </div>
+	      	</div>
 	   <div class="clearfix"> </div>
 	</div>
 </div>
@@ -40,6 +50,20 @@
 </html>	
 
 <style>
+	.applybtn{
+		margin-top:40px;
+		height:40px;
+		width:90px;
+		background-color: #33ccff;
+		border:none;
+		border-radius:5px;
+		font-size:15px;
+	}
+
+	.applybtn:hover{
+		background-color: #00ace6;
+	}
+
 	.SingleContainer{
 		padding-right: 15px;
   		padding-left: 15px;
@@ -92,5 +116,15 @@
 		min-height: 1px;
 		padding-left: 15px;
 		padding-right: 15px;
+	}
+
+	.jobinfo1{
+		position: absolute;
+		margin-top: -385px;
+		margin-left: 400px;
+	}
+
+	ul li{
+		list-style-type: none;;
 	}
 </style>
