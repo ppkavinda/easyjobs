@@ -1,4 +1,31 @@
-<div class="footer_bottom">	
+<div class="footer">
+	<div class="container">
+		<div class="footer_text">
+			<p>&copy; Job Seekers</p>
+		</div>
+		
+		<div class="clearfix"> </div>
+	</div>
+</div>
+
+<style>
+	.footer{     
+  background:#212121;
+  padding:1em 0; 
+}
+.footer_text{
+  border-bottom:1px solid #999;
+}
+.footer_text p{
+  color:#999;
+  line-height:1.8em;
+}
+
+</style>
+
+
+
+<!-- <div class="footer_bottom">	
   <div class="container">
     <div class="col-sm-2">
   		<ul class="f_list2">
@@ -32,4 +59,4 @@
 		<p>Copyright © 2015 Seeking . All Rights Reserved . Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 	</div>
   </div>
-</div>
+</div> -->

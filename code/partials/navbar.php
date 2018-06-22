@@ -74,31 +74,6 @@ li a:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 	    <div class="navbar-header">
