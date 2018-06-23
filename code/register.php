@@ -7,26 +7,38 @@ guestOnly();
 include_once("db/config.php");
 
 if(isset($_POST["submit-employer"])){
+    $target_dir = "uploads/img/";
+    $target_file = $target_dir . basename($_FILES["profilePic"]["name"]);
     $email = clean_input($_POST["email"]);
     $password = clean_input($_POST["password"]);
     $name = clean_input($_POST['name']);
     $telephone = clean_input($_POST['tpno']);
     $website = clean_input($_POST['website']);
-    $profile_pic = clean_input($_POST['profilePic']);
     $description = clean_input($_POST['description']);
 
     $sql1 = "INSERT INTO users(email, password, role) VALUES ('$email',  '" . md5($password) ."', '3');";
     $result1 = mysqli_query($con, $sql1) or die(mysqli_error($con));
 
     if($result1){
-	    $sql2 = "INSERT INTO `employers` (`employer_id`, `name`, `telephone`, `website`, `profile_pic`, `description`) VALUES ('". mysqli_insert_id($con) ."', '$name', '$telephone', '$website', '$profile_pic', '$description');";
-	    $result2 = mysqli_query($con, $sql2);
+        $sql2 = "INSERT INTO `employers` (`employer_id`, `name`, `telephone`, `website`, `profile_pic`, `description`) 
+        VALUES ('". mysqli_insert_id($con) ."', '$name', '$telephone', '$website', '$target_file', '$description');";
 
-	    if ($result2) {
-        	header("Location: login.php");
-	    }
+        $result2 = mysqli_query($con, $sql2);
+        if ($result2) {
+            if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $target_file)) {
+                header("Location: login.php");
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        } else {
+            echo "employers registration failed";
+        }
+    } else {
+        echo "user registration failed";
     }
 } else if(isset($_POST["submit-employee"])){
+    $target_dir = "uploads/img/";
+    $target_file = $target_dir . basename($_FILES["profilePic"]["name"]);
     $fname = clean_input($_POST['fname']);
     $lname = clean_input($_POST['lname']);
     $email = clean_input($_POST["email"]);
@@ -36,19 +48,28 @@ if(isset($_POST["submit-employer"])){
     $address1 = clean_input($_POST["address1"]);
     $address2 = clean_input($_POST["address2"]);
     $telephone = clean_input($_POST['tpno']);
-    $profile_pic = clean_input($_POST['profilePic']);
     $description = clean_input($_POST['description']);
-
+    
     $sql1 = "INSERT INTO users(email, password, role) VALUES ('$email',  '" . md5($password) ."', '2');";
     $result1 = mysqli_query($con, $sql1) or die(mysqli_error($con));
 
     if($result1){
-	    $sql2 = "INSERT INTO `employees` (`employee_id`, `fname`, `lname`, `dob`, `gender`, `address1`, `address2`, `description`, `profile_pic`) VALUES ('". mysqli_insert_id($con) ."', '$fname', '$lname', '$dob', '$gender', '$address1', '$address2', '$description', '$profile_pic');";
-	    $result2 = mysqli_query($con, $sql2);
+        $sql2 = "INSERT INTO `employees` (`employee_id`, `fname`, `lname`, `dob`, `gender`, `address1`, `address2`, telephone, `description`, `profile_pic`) 
+        VALUES ('". mysqli_insert_id($con) ."', '$fname', '$lname', '$dob', '$gender', '$address1', '$address2', $telephone, '$description', '$target_file');";
+
+        $result2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
 
 	    if ($result2) {
-        	header("Location: login.php");
-	    }
+            if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $target_file)) {
+            	header("Location: login.php");
+    	    } else {
+                echo "uploading file failed.";
+            }
+        } else {
+            echo "employer registration failed.";
+        }
+    } else {
+        echo "user registeration failed.";
     }
 }
 
@@ -82,7 +103,7 @@ if(isset($_POST["submit-employer"])){
 			   		<button class="rorl" onclick="showEmployee()">I am an Employee</button>
 			   		<button class="rorl" onclick="showEmployer()">I am an Employer</button>
 <!--  EMPLOYER FORM  -->
-                    <form style="display: none" id="employerForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <form style="display: none" id="employerForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
                     <div class="section-title">
                         <h3>Register As Employer</h3>
                     </div>
@@ -127,11 +148,11 @@ if(isset($_POST["submit-employer"])){
                             </div>
                         </div>
 						<div class="login-btn">
-						   <input type="submit" name="submit-employer" value="Log in">
+						   <input type="submit" name="submit-employer" value="Register">
 						</div>
                      </form>
  <!-- EMPLOYEE FORM  -->
-					<form id="employeeForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+					<form id="employeeForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
 					 <div class="section-title">
                         <h3>Register As Employee</h3>
                     </div>
@@ -198,7 +219,7 @@ if(isset($_POST["submit-employer"])){
                             </div>
                         </div>
 						<div class="login-btn">
-						   <input type="submit" name="submit-employee" value="Log in">
+						   <input type="submit" name="submit-employee" value="Register">
 						</div>
                      </form>
 				

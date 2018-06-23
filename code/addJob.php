@@ -2,23 +2,36 @@
 session_start();
 
 include_once("helpers/functions.php");
-guestOnly();
 
 include_once("db/config.php");
 
-if(isset($_POST["submit-employer"])){
+if(isset($_POST["submit-job"])){
+    $target_dir = "uploads/img/";
+    $target_file = $target_dir . basename($_FILES["profilePic"]["name"]);
     $title = clean_input($_POST['title']);
     $salary = clean_input($_POST['salary']);
     $age= clean_input($_POST['age']);
     $location = clean_input($_POST['location']);
-    $profile_pic = clean_input($_POST['profilePic']);
     $description = clean_input($_POST['description']);
 
-    $sql1 = "INSERT INTO `jobs` (`job_id`, `employer_id`, `title`, `description`, `salary`, `age_limit`, `location`, `posted_on`, `job_pic`) VALUES (NULL, '$_SESSION[user_id]', '$title', '$description', '$salary', '$age', '$location', CURRENT_TIMESTAMP, '$profile_pic');";
+    $sql1 = "INSERT INTO `jobs` (`job_id`, `employer_id`, `title`, `job_description`, `salary`, `age_limit`, `location`, `posted_on`, `job_pic`) VALUES (NULL, '$_SESSION[user_id]', '$title', '$description', '$salary', '$age', '$location', CURRENT_TIMESTAMP, '$target_file');";
     $result1 = mysqli_query($con, $sql1) or die(mysqli_error($con));
 
     if($result1){
-    	header("Location: login.php");
+        $sql2 = "INSERT INTO `employer_job` (`employer_id`, `job_id`) VALUES ('$_SESSION[user_id]', '". mysqli_insert_id($con). "');";
+        $result2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
+
+        if ($result2) {
+            if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $target_file)) {
+        	   header("Location: addJob.php"); 
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        } else {
+            echo "job_employee adding failed!";
+        }
+    } else {
+        echo "job registration failed!";
     }
 }
  ?>
@@ -26,8 +39,8 @@ if(isset($_POST["submit-employer"])){
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Single :: w3layouts</title>
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+    <title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Single :: w3layouts</title>
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
 
@@ -39,7 +52,7 @@ if(isset($_POST["submit-employer"])){
     <div class="Single">
     	<div class="single_right">
             <div class="login-content">
-				<form id="employeeForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+				<form id="employeeForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
 				    <div class="section-title">
                         <h3>Add a Vacancy</h3>
                     </div>

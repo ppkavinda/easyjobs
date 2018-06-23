@@ -14,9 +14,27 @@ function isLoggedIn () {
 	}
 }
 
-function isEmployee () {
+function isAdmin () {
+	if (isset ($_SESSION['role'])){
+		if ($_SESSION['role'] == 1){
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+function isEmployer () {
 	if (isset ($_SESSION['role'])){
 		if ($_SESSION['role'] == 3){
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+function isEmployee () {
+	if (isset ($_SESSION['role'])){
+		if ($_SESSION['role'] == 2){
 			return true;
 		} else {
 			return false;

@@ -23,7 +23,7 @@ if(isset($_POST["submit"])){
         $_SESSION["role"] = $row["role"];
 
         if($_SESSION["role"] == 1){
-            header("Location: admin/");
+            header("Location: admin.php");
         }else{
             header("Location: index.php");
         }

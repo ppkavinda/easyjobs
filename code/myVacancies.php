@@ -1,9 +1,10 @@
 <?php
-	session_start();
-	include('helpers/functions.php');
-	include('db/config.php');
+session_start();
 
-	$sql = "SELECT * FROM `jobs` INNER JOIN employers ON jobs.employer_id = employers.employer_id";
+include_once("helpers/functions.php");
+
+include_once("db/config.php");
+	$sql = "SELECT * FROM `jobs` INNER JOIN employers ON jobs.employer_id = employers.employer_id WHERE jobs.employer_id = $_SESSION[user_id]";
 	$result = mysqli_query($con, $sql);
 	if ($result) {
 		$str = '';
@@ -16,22 +17,31 @@
 				<h4><a href='single.php?q=$row[job_id]'>$row[title]</a></h4>
 				<h6>Posted On <span class='dot'>·</span> $row[posted_on]</h6>
 				<p>$row[description]</p>
+				<h5><a class='candidate' href='candidates.php?q=$row[job_id]'>View Candidates</a></h5>
 			</div>
 			<div class='clearfix'> </div>
 		   </div>";
 		}
 	}
-?>
+ ?>
+
 <!DOCTYPE HTML>
 <html>
-	<head>
-	<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
-	<link href="css/style.css" rel='stylesheet' type='text/css' />
-	</head>
+<head>
+<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Single :: w3layouts</title>
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+</head>
 <body>
+<style>
+.candidate {
+	background: antiquewhite;
+	padding: 4px 8px;
+	color: red;
+}
+</style>
+<?php include('partials/navbar.php'); ?>
 
-<?php include('partials/navbar.php'); ?>	
-<?php include('partials/banner.php'); ?>
+<?php include('partials/banner2.php'); ?>
 
 <div class="container">
 	 <div class="single">  
@@ -48,6 +58,7 @@
 <?php include('partials/footer.php'); ?>
 
 </body>
+</html>	
 <style>
 	.single{
 	padding:5em 0;
@@ -97,4 +108,3 @@
 	margin-bottom: 10px;
 }
 </style>
-</html>	

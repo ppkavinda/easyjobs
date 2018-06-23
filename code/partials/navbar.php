@@ -3,20 +3,22 @@
 <div>
 <ul class="navul" id="navBar">
 	<div class="flleft">
-		<li class="navItem title"><a href="index.php"><span class="navHead1">S</span><span class="navHead2">eekers</span></a></li>
+		<li class="title"><a href="index.php"><span class="navHead1">S</span><span class="navHead2">eekers</span></a></li>
+        <li class="navItem"><a href="contact.php">Contact</a></li>
+        <li class="navItem"><a href="about.php">About</a></li>
 	</div>
 	  
 	<div class="flright">
         <?php
-            if (isEmployee()) {
-                echo "<li class='navItem'><a href='addJob.php'>Add Vacancy</a></li>";
+            if (isAdmin() ) {
+                echo "<li class='navItem'><a href='admin.php'>Admin</a></li>";
+            } else if (isEmployer()) {
+                echo "<li class='navItem'><a href='addJob.php'>New Vacancy</a></li>";
+                echo "<li class='navItem'><a href='myVacancies.php'>My Vacancies</a></li>";
+            } else if (isEmployee()){
+                echo "<li class='navItem'><a href='profile.php'>My Profile</a></li>";
             }
-        ?>
-        
-        <li class="navItem"><a href="contact.php">Contact</a></li>
-        <li class="navItem"><a href="about.php">About</a></li>
 
-        <?php
             if (isLoggedIn()) {
                 echo "<li class='navItem'><a href='logout.php'>Logout</a></li>";
             } else {
@@ -76,6 +78,9 @@ li a:hover {
 
 .flleft{
     margin-left: 150px;
+}
+.flleft .navItem{
+    margin-top: 5px;
 }
 .flright{
 	margin-top:5px;

@@ -1,243 +1,88 @@
+<?php
+session_start();
+include ('helpers/functions.php');
+include ('db/config.php');
+
+$sql = "SELECT * FROM employees INNER JOIN users ON employees.employee_id = users.user_id WHERE employee_id = " . $_SESSION['user_id'];
+$result = mysqli_query($con, $sql) or die(mysqli_error($con));
+if ($result) {
+	$row = mysqli_fetch_array($result);
+}
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Location_Single :: w3layouts</title>
+	<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Location_Single :: w3layouts</title>
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
 
 <?php include('partials/navbar.php'); ?>
-<?php include('partials/banner.php'); ?>
+<?php include('partials/banner2.php'); ?>
+<style>
+.single {
+	padding-top: 5em;
+}
+.single_right p {
+    color: #555;
+    font-size: 0.85em;
+    font-weight: 300;
+    line-height: 1.8em;
+    margin-bottom: 10px;
+}
+.description-pane {
+	width: 75%;
+	float: left;
+}
+.detail-pane {
+	width: 25%;
+	float: left;
+}
+.my_details {
+	/*width: 50%;*/
+	margin-top: 20px;
+}
+.det {
+	padding: 20px;
+	padding-left: 0;
+}
+.det span {
+	font-weight: 600;
+	width: 150px;
+	display: inline-block;
+}
+.det div {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.profile_pic {
+	width: 300px;
+}
+</style>
 
 <div class="container">
     <div class="single">  
-	   <div class="col-md-9 single_right">
-	       <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-	       <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-	       <dl class="experience">
-	       	 <div class="experience_content experience_content1">
-	       	   <div class="experience_period"> 
-	       		 <small>From:</small><br><span>2005</span><br><small>To:</small><br><span>2010</span>
-	       	   </div>
-	       	   <div class="experience_1"><dt><h6>Software Engineer</h6></dt>
-	       		 <dd>
-	       		 	<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-	       		 </dd></div>
-	       	   </div>
-	       	   <div class="experience_content">
-	       	   	<div class="experience_period"> 
-	       	   	<small>From:</small><br><span>2011</span><br><small>To:</small><br><span>Present</span></div>
-	       	   	<div class="experience_1">
-	       	   	  <dt><h6>Software Engineer</h6></dt>
-	       	   	  <dd>
-	       	   	  	<p>Nulla ornare diam vel leo pellentesque, at iaculis sem sagittis. Vestibulum quam ante, convallis ac dignissim vel, venenatis id risus. Quisque posuere sem vitae placerat feugiat.</p>
-	       		  </dd>
-	       		</div>
-	       	   </div>
-	       </dl>
-	       <div class="comments">
-	      	<h6>Comments</h6>
-			<div class="media media_1">
-			  <div class="media-left"><a href="#"> </a></div>
-			  <div class="media-body">
-			    <h4 class="media-heading"><a class="author" href="#">Sollicitudin</a><a class="reply" href="#">Reply</a><div class="clearfix"> </div></h4>
-			    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-			  </div>
-			  <div class="clearfix"> </div>
-			</div>
-			<div class="media">
-			  <div class="media-left"><a href="#"> </a></div>
-			  <div class="media-body">
-			    <h4 class="media-heading"><a class="author" href="#">Sollicitudin</a><a class="reply" href="#">Reply</a><div class="clearfix"> </div></h4>
-			    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-			  </div>
-			</div>
-		  </div>
-	      <form>
-			<div class="to">
-             	<input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
-			 	<input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:3%">
-			</div>
-			<div class="text">
-               <textarea value="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
-            </div>
-            <div class="form-submit1">
-	           <input name="submit" type="submit" id="submit" value="Submit"><br>
-	        </div>
-			<div class="clearfix"></div>
-          </form>
-          <div class="candidates-item">
-          	 <h5>Similar Candidates</h5>	
-            <div class="candidate_1"> 	
-			 <div class="thumb"><img src="images/pic8.jpg" class="img-responsive" alt=""/></div>
-             <div class="thumb_desc">
-			   <h6 class="title"><a href="#">consectetur</a></h6>
-			   <span class="meta">27 Years Old - Sydney, AU</span>
-               <div class="candidate_but">
-				<ul class="top-btns">
-					<li><a href="#" class="btn_5 btn-gray fa fa-plus toggle"></a></li>
-					<li><a href="#" class="btn_5 btn-gray fa fa-star"></a></li>
-					<li><a href="#" class="btn_5 btn-gray fa fa-link"></a></li>
-				</ul>
-               </div>
-			   <p class="sm_1">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-			</div>
-			<div class="clearfix"></div>	
-		   </div>
-		   <div class="candidate_1"> 	
-			 <div class="thumb"><img src="images/pic7.jpg" class="img-responsive" alt=""/></div>
-             <div class="thumb_desc">
-			   <h6 class="title"><a href="#">consectetur</a></h6>
-			   <span class="meta">27 Years Old - Sydney, AU</span>
-               <div class="candidate_but">
-				<ul class="top-btns">
-					<li><a href="#" class="btn_5 btn-gray fa fa-plus toggle"></a></li>
-					<li><a href="#" class="btn_5 btn-gray fa fa-star"></a></li>
-					<li><a href="#" class="btn_5 btn-gray fa fa-link"></a></li>
-				</ul>
-               </div>
-			   <p class="sm_1">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-			</div>
-			<div class="clearfix"></div>	
-		   </div>
-		   <div class="candidate_1"> 	
-			 <div class="thumb"><img src="images/pic6.jpg" class="img-responsive" alt=""/></div>
-             <div class="thumb_desc">
-			   <h6 class="title"><a href="#">consectetur</a></h6>
-			   <span class="meta">27 Years Old - Sydney, AU</span>
-               <div class="candidate_but">
-				<ul class="top-btns">
-					<li><a href="#" class="btn_5 btn-gray fa fa-plus toggle"></a></li>
-					<li><a href="#" class="btn_5 btn-gray fa fa-star"></a></li>
-					<li><a href="#" class="btn_5 btn-gray fa fa-link"></a></li>
-				</ul>
-               </div>
-			   <p class="sm_1">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-			</div>
-			<div class="clearfix"></div>	
-		   </div>
-		   <div class="candidate_2"> 	
-			 <div class="thumb"><img src="images/pic5.jpg" class="img-responsive" alt=""/></div>
-             <div class="thumb_desc">
-			   <h6 class="title"><a href="#">consectetur</a></h6>
-			   <span class="meta">27 Years Old - Sydney, AU</span>
-               <div class="candidate_but">
-				<ul class="top-btns">
-					<li><a href="#" class="btn_5 btn-gray fa fa-plus toggle"></a></li>
-					<li><a href="#" class="btn_5 btn-gray fa fa-star"></a></li>
-					<li><a href="#" class="btn_5 btn-gray fa fa-link"></a></li>
-				</ul>
-               </div>
-			   <p class="sm_1">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-			</div>
-			<div class="clearfix"></div>	
-		   </div>
-		</div>
+	   <div class="description-pane single_right">
+	       <p><?= $row['description']; ?></p>
+
+         <div class="my_details">
+          	<h2>Personal Details</h2>
+          	<div class="det">
+          		<div><span>Name :</span><?= $row['fname'] . ' ' . $row['lname']; ?></div>
+          		<div><span>Date of Birth :</span> <?= $row['dob']; ?></div>
+          		<div><span>Address :</span><?= $row['address1'] . ' ' . $row['address2']; ?></div>
+          		<div><span>Gender :</span> <?= $row['gender']; ?></div>
+          		<div><span>Contact No:</span> <?= $row['telephone']; ?></div>
+          		<div><span>Email :</span> <?= $row['email']; ?></div>
+          	</div>
+		 </div>
        </div>
-       <div class="col-md-3">
-	   	  <img src="images/f12.jpg" class="img-responsive" alt=""/>
-	   	  <div class="map_1">
-	         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3150859.767904157!2d-96.62081048651531!3d39.536794757966845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1408111832978"> </iframe>
-          </div>
-          <table class="condidate_detail">
-          	<h4>Candidate Details</h4>
-			<tbody>
-				<tr>
-					<td>Name</td>
-					<td>Lorem Ipsum</td>
-				</tr>
+       <div class="detail-pane">
+	   	  <img src="<?= $row['profile_pic']; ?>" class="img profile_pic" alt="Proile"/>
 
-				<tr>
-					<td>Age</td>
-					<td>35 Years Old</td>
-				</tr>
-
-				<tr>
-					<td>Location</td>
-					<td>Australia</td>
-				</tr>
-
-				<tr>
-					<td>Experiance</td>
-					<td>10 Years</td>
-				</tr>
-
-				<tr>
-					<td>Dgree</td>
-					<td>MCA</td>
-				</tr>
-
-				<tr>
-					<td>Career Lavel</td>
-					<td>Mid-Level</td>
-				</tr>
-
-				<tr>
-					<td>Phone</td>
-					<td>(800) 2547-879</td>
-				</tr>
-
-				<tr>
-					<td>Fax</td>
-					<td>(800) 1247-256</td>
-				</tr>
-
-				<tr>
-					<td>E-mail</td>
-					<td><a href="mailto:example@example.com">example@example.com</a></td>
-				</tr>
-
-				<tr>
-					<td>Website</td>
-					<td><a href="#">example.com</a></td>
-				</tr>
-			</tbody>
-		 </table>
        </div>
        <div class="clearfix"> </div>
     </div>
-</div>    
-<div class="footer">
-	<div class="container">
-		<div class="col-md-3 grid_3">
-			<h4>Navigate</h4>
-			<ul class="f_list f_list1">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="login.html">Sign In</a></li>
-				<li><a href="login.html">Join Now</a></li>
-				<li><a href="about.html">About</a></li>
-			</ul>
-			<ul class="f_list">
-				<li><a href="features.html">Features</a></li>
-				<li><a href="terms.html">Terms of use</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
-				<li><a href="jobs.html">Post a Job</a></li>
-			</ul>
-			<div class="clearfix"> </div>
-		</div>
-		<div class="col-md-3 grid_3">
-			<h4>Twitter Widget</h4>
-			<div class="footer-list">
-			  <ul>
-				<li><i class="fa fa-twitter tw1"> </i><p><span class="yellow"><a href="#">consectetuer</a></span> adipiscing elit web design</p></li>
-				<li><i class="fa fa-twitter tw1"> </i><p><span class="yellow"><a href="#">consectetuer</a></span> adipiscing elit web design</p></li>
-				<li><i class="fa fa-twitter tw1"> </i><p><span class="yellow"><a href="#">consectetuer</a></span> adipiscing elit web design</p></li>
-			  </ul>
-			</div>
-		</div>
-		<div class="col-md-3 grid_3">
-			<h4>Seeking</h4>
-			<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
-		</div>
-		<div class="col-md-3 grid_3">
-			<h4>Sign up for our newsletter</h4>
-			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.</p>
-			<form>
-				<input type="text" class="form-control" placeholder="Enter your email">
-				<button type="button" class="btn red">Subscribe now!</button>
-		    </form>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
 </div>
 
 <?php include('partials/footer.php'); ?>
