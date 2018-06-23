@@ -1,3 +1,18 @@
+<?php
+session_start();
+include ('helpers/functions.php');
+
+include_once("db/config.php");
+if (isset($_REQUEST['q'])) {
+	$sql = "SELECT * FROM `jobs` INNER JOIN employers ON jobs.employer_id = employers.employer_id INNER JOIN users ON jobs.employer_id = users.user_id WHERE jobs.job_id = $_REQUEST[q]";
+	$result = mysqli_query($con, $sql);
+	if ($result) {
+		$row = mysqli_fetch_array($result);
+		echo "done";
+	}
+}
+
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -17,22 +32,21 @@
 	      	<div class="row_1">
 	      		<div class="divImg Single_img">
 	      			<img src="images/a1.jpg" class="img" alt="job image"/>
+					<div class="jobinfo1">
+							<p>Employer : <span><?= $row['name']; ?></span></p>
+							<p>Sallery : <span><?= $row['salary']; ?> LKR</span></p>
+							<p>Location : <span><?= $row['location']; ?></span></p>
+							<p>Email : <span><?= $row['email']; ?></span></p>
+							<p>Contact : <span><?= $row['telephone']; ?></span></p>
+					</div>
 				</div>
-				<br><br><br>
-				<h2>Description</h2>
+				<div class="clearfix"></div>
+				<h2 style="margin-top: 20px;">Description</h2>
 	      		<div class="Single-para">
 	      			<p>
-						  Job Description 
+	      				<?= $row['title']; ?>
 					</p>	
 				</div>
-				<div class="jobinfo1">
-					<ul>
-						<li>Employer : abv pvt ltd</li><br><br>
-						<li>Sallery : 10000</li><br><br>
-						<li>Location : kanaththa</li>
-					</ul>
-				</div>
-				
 				<div class="applybtndiv">
 				<input class="applybtn" type="submit" name="submit" id="" Value="Apply">
 				</div>
@@ -117,12 +131,17 @@
 		padding-left: 15px;
 		padding-right: 15px;
 	}
-
+	.single_img img {
+		float: left;
+	}
 	.jobinfo1{
-		position: absolute;
-		margin-top: -385px;
-		margin-left: 400px;
+		float: left;
+		margin-left: 20px;
+		padding: 20px;
 		font-family: Tahoma, Geneva, sans-serif;
+	}
+	.jobinfo1 span {
+		font-weight: 900;
 	}
 
 	ul li{

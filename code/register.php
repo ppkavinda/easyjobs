@@ -1,3 +1,59 @@
+<?php
+session_start();
+
+include_once("helpers/functions.php");
+guestOnly();
+
+include_once("db/config.php");
+
+if(isset($_POST["submit-employer"])){
+    $email = clean_input($_POST["email"]);
+    $password = clean_input($_POST["password"]);
+    $name = clean_input($_POST['name']);
+    $telephone = clean_input($_POST['tpno']);
+    $website = clean_input($_POST['website']);
+    $profile_pic = clean_input($_POST['profilePic']);
+    $description = clean_input($_POST['description']);
+
+    $sql1 = "INSERT INTO users(email, password, role) VALUES ('$email',  '" . md5($password) ."', '3');";
+    $result1 = mysqli_query($con, $sql1) or die(mysqli_error($con));
+
+    if($result1){
+	    $sql2 = "INSERT INTO `employers` (`employer_id`, `name`, `telephone`, `website`, `profile_pic`, `description`) VALUES ('". mysqli_insert_id($con) ."', '$name', '$telephone', '$website', '$profile_pic', '$description');";
+	    $result2 = mysqli_query($con, $sql2);
+
+	    if ($result2) {
+        	header("Location: login.php");
+	    }
+    }
+} else if(isset($_POST["submit-employee"])){
+    $fname = clean_input($_POST['fname']);
+    $lname = clean_input($_POST['lname']);
+    $email = clean_input($_POST["email"]);
+    $password = clean_input($_POST["password"]);
+    $dob = clean_input($_POST["dob"]);
+    $gender = clean_input($_POST["gender"]);
+    $address1 = clean_input($_POST["address1"]);
+    $address2 = clean_input($_POST["address2"]);
+    $telephone = clean_input($_POST['tpno']);
+    $profile_pic = clean_input($_POST['profilePic']);
+    $description = clean_input($_POST['description']);
+
+    $sql1 = "INSERT INTO users(email, password, role) VALUES ('$email',  '" . md5($password) ."', '2');";
+    $result1 = mysqli_query($con, $sql1) or die(mysqli_error($con));
+
+    if($result1){
+	    $sql2 = "INSERT INTO `employees` (`employee_id`, `fname`, `lname`, `dob`, `gender`, `address1`, `address2`, `description`, `profile_pic`) VALUES ('". mysqli_insert_id($con) ."', '$fname', '$lname', '$dob', '$gender', '$address1', '$address2', '$description', '$profile_pic');";
+	    $result2 = mysqli_query($con, $sql2);
+
+	    if ($result2) {
+        	header("Location: login.php");
+	    }
+    }
+}
+
+ ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,15 +65,76 @@
 <?php include('partials/navbar.php'); ?>
 
 <?php include('partials/banner2.php'); ?>
-
+<script>
+	function showEmployee () {
+		document.getElementById('employeeForm').style.display = "block";
+		document.getElementById('employerForm').style.display = "none";
+	}
+	function showEmployer () {
+		document.getElementById('employerForm').style.display = "block";
+		document.getElementById('employeeForm').style.display = "none";
+	}
+</script>
 <div class="container">
     <div class="Single">
     	<div class="single_right">
                 <div class="login-content">
-                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                        <div class="section-title">
-                            <h3>LogIn to your Account</h3>
+			   		<button class="rorl" onclick="showEmployee()">I am an Employee</button>
+			   		<button class="rorl" onclick="showEmployer()">I am an Employer</button>
+<!--  EMPLOYER FORM  -->
+                    <form style="display: none" id="employerForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <div class="section-title">
+                        <h3>Register As Employer</h3>
+                    </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control " placeholder="Name" required>
+                            </div>
                         </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="password" name="passwordc" class="form-control" placeholder="Confirm Password" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="number" name="tpno" class="form-control" placeholder="Telephone" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="url" name="website" class="form-control" placeholder="Website" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <label>Profile Picture: </label><input type="file" name="profilePic" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <textarea style="height: inherit;" name="description" class="form-control" cols="30" rows="10" placeholder="Enter some description about your company"></textarea>
+                            </div>
+                        </div>
+						<div class="login-btn">
+						   <input type="submit" name="submit-employer" value="Log in">
+						</div>
+                     </form>
+ <!-- EMPLOYEE FORM  -->
+					<form id="employeeForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+					 <div class="section-title">
+                        <h3>Register As Employee</h3>
+                    </div>
                         <div class="textbox-wrap">
                             <div class="input-group">
                                 <input type="text" name="fname" class="form-control " placeholder="First Name" required>
@@ -40,26 +157,50 @@
                         </div>
                         <div class="textbox-wrap">
                             <div class="input-group">
+                                <input type="password" name="passwordc" class="form-control" placeholder="Confirm Password" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="date" name="dob" class="form-control" placeholder="Date of Birth" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <label><input type="radio" name="gender" required>Male</label>
+                                <label><input type="radio" name="gender" required>Female</label>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="text" name="address1" class="form-control" placeholder="Address1" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <input type="text" name="address2" class="form-control" placeholder="Address2" required>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
                                 <input type="number" name="tpno" class="form-control" placeholder="Telephone" required>
                             </div>
                         </div>
+
                         <div class="textbox-wrap">
                             <div class="input-group">
-                                <input type="text"  class="form-control" placeholder="Password" required>
+                                <label>Profile Picture: </label><input type="file" name="profilePic" required>
                             </div>
                         </div>
                         <div class="textbox-wrap">
                             <div class="input-group">
-                                <input type="password" class="form-control " placeholder="Password" required>
+                                <textarea style="height: inherit;" name="description" class="form-control" cols="30" rows="10" placeholder="Enter some description about yourself"></textarea>
                             </div>
                         </div>
+						<div class="login-btn">
+						   <input type="submit" name="submit-employee" value="Log in">
+						</div>
                      </form>
-                     <div class="forgot">
-					     <div class="clearfix"> </div>
-			        </div>
-					<div class="login-btn">
-					   <input type="submit" name="submit" value="Log in">
-					</div>
 				
                 </div>
    </div>
@@ -192,7 +333,7 @@ input.form-control {
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-.login-btn input[type="submit"]{
+.login-btn input[type="submit"], .rorl{
     background:#2185C5;
     color: #FFF;
     font-size: 15px;

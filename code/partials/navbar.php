@@ -7,11 +7,23 @@
 	</div>
 	  
 	<div class="flright">
-		<li class="navItem"><a href="index.php">Home</a></li>
-  		<li class="navItem"><a href="contact.php">Contact</a></li>
-		<li class="navItem"><a href="about.php">About</a></li>
-		<li class="navItem"><a href="register.php">Register</a></li>
-  		<li class="navItem"><a href="login.php">Login</a></li>
+        <?php
+            if (isEmployee()) {
+                echo "<li class='navItem'><a href='addJob.php'>Add Vacancy</a></li>";
+            }
+        ?>
+        
+        <li class="navItem"><a href="contact.php">Contact</a></li>
+        <li class="navItem"><a href="about.php">About</a></li>
+
+        <?php
+            if (isLoggedIn()) {
+                echo "<li class='navItem'><a href='logout.php'>Logout</a></li>";
+            } else {
+                echo "<li class='navItem'><a href='register.php'>Register</a></li>";
+                echo "<li class='navItem'><a href='login.php'>Login</a></li>";
+            }
+        ?>
 	</div>
 </ul>
 </div>

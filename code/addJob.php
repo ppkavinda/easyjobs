@@ -4,34 +4,24 @@ session_start();
 include_once("helpers/functions.php");
 guestOnly();
 
-if(isset($_POST["submit"])){
-    include_once("db/config.php");
-    $email = clean_input($_POST["email"]);
-    $password = clean_input($_POST["password"]);
+include_once("db/config.php");
 
-    $sql = "SELECT user_id, role FROM users WHERE email = '$email' AND password = '" . md5($password) . "';";
-    $result = mysqli_query($con, $sql) or  die(mysqli_error($con));
-    
-    if(mysqli_num_rows($result)>0){
+if(isset($_POST["submit-employer"])){
+    $title = clean_input($_POST['title']);
+    $salary = clean_input($_POST['salary']);
+    $age= clean_input($_POST['age']);
+    $location = clean_input($_POST['location']);
+    $profile_pic = clean_input($_POST['profilePic']);
+    $description = clean_input($_POST['description']);
 
-        $row = mysqli_fetch_array($result);
-        echo $row["user_id"];
-        echo $row["role"];
+    $sql1 = "INSERT INTO `jobs` (`job_id`, `employer_id`, `title`, `description`, `salary`, `age_limit`, `location`, `posted_on`, `job_pic`) VALUES (NULL, '$_SESSION[user_id]', '$title', '$description', '$salary', '$age', '$location', CURRENT_TIMESTAMP, '$profile_pic');";
+    $result1 = mysqli_query($con, $sql1) or die(mysqli_error($con));
 
-        //if details are correct logging in the user
-        $_SESSION["user_id"] = $row['user_id'];
-        $_SESSION["role"] = $row["role"];
-
-        if($_SESSION["role"] == 1){
-            header("Location: admin/");
-        }else{
-            header("Location: index.php");
-        }
-    }else{
-        echo "You have Failed! #This city.";
+    if($result1){
+    	header("Location: login.php");
     }
 }
-?>
+ ?>
 
 <!DOCTYPE HTML>
 <html>
@@ -48,31 +38,47 @@ if(isset($_POST["submit"])){
 <div class="container">
     <div class="Single">
     	<div class="single_right">
-                <div class="login-content">
-                    <form method="POST" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                        <div class="section-title">
-                            <h3>LogIn to your Account</h3>
+            <div class="login-content">
+				<form id="employeeForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+				    <div class="section-title">
+                        <h3>Add a Vacancy</h3>
+                    </div>
+                    <div class="textbox-wrap">
+                        <div class="input-group">
+                            <input type="text" name="title" class="form-control " placeholder="Job Title" required>
                         </div>
-                        <div class="textbox-wrap">
-                            <div class="input-group">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                            </div>
+                    </div>
+                    <div class="textbox-wrap">
+                        <div class="input-group">
+                            <input type="text" name="salary" class="form-control" placeholder="Salary" required>
                         </div>
-                        <div class="textbox-wrap">
-                            <div class="input-group">
-                                <input type="password" name="password" class="form-control " placeholder="Password" required>
-                            </div>
+                    </div>
+                    <div class="textbox-wrap">
+                        <div class="input-group">
+                            <input type="text" name="age" class="form-control" placeholder="Age Limit" required>
                         </div>
-                     <div class="forgot">
-					     <div class="clearfix"> </div>
-			        </div>
+                    </div>
+                    <div class="textbox-wrap">
+                        <div class="input-group">
+                            <input type="text" name="location" class="form-control" placeholder="Location" required>
+                        </div>
+                    </div>
+                    <div class="textbox-wrap">
+                        <div class="input-group">
+                            <label>Job Picture: </label><input type="file" name="profilePic" required>
+                        </div>
+                    </div>
+                    <div class="textbox-wrap">
+                        <div class="input-group">
+                            <textarea style="height: inherit;" name="description" class="form-control" cols="30" rows="10" placeholder="Enter some description about yourself"></textarea>
+                        </div>
+                    </div>
 					<div class="login-btn">
-					   <input type="submit" name="submit" value="Log in">
+					   <input type="submit" name="submit-job" value="Log in">
 					</div>
-                     </form>
-				
-                </div>
-   </div>
+                 </form>
+            </div>
+        </div>
 	   <div class="clearfix"> </div>
 	</div>
 </div>
@@ -202,7 +208,7 @@ input.form-control {
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-.login-btn input[type="submit"]{
+.login-btn input[type="submit"], .rorl{
     background:#2185C5;
     color: #FFF;
     font-size: 15px;
