@@ -13,7 +13,7 @@ if ($result) {
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Location_Single :: w3layouts</title>
+	<title>Easy Jobs</title>
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<link href="css/admin.css" rel="stylesheet" type="text/css"> 
 </head>
@@ -28,7 +28,7 @@ if ($result) {
 			<a href="mes.php" class="button"><h4>View Messages</h4></a>
 		</div>
 	</div>
-	<div style="height: 200px;"></div>
+	<div style="height: 250px;"></div>
 
 <?php include('partials/footer.php'); ?>
 

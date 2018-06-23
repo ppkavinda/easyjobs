@@ -24,3 +24,9 @@ if ($_REQUEST['t'] == 'jobs') {
 
 	header('Location: jobs.php');
 }
+if ($_REQUEST['t'] == 'message') {
+	$sql = "DELETE FROM `messages` WHERE `messages`.`mes_id` = $_REQUEST[id]";
+	$result = mysqli_query($con, $sql) or die(mysqli_error($con));
+
+	header('Location: mes.php');
+}

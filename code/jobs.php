@@ -31,7 +31,7 @@ adminOnly();
 <html lang="en">
 
 <head>
-	<title>One Movies</title>
+	<title>Easy Jobs</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<link href="css/admin.css" rel="stylesheet" type="text/css"> 
 	<link href="css/tables.css" rel="stylesheet" type="text/css"> 

@@ -2,10 +2,11 @@
 session_start();
 
 include_once("helpers/functions.php");
-
 include_once("db/config.php");
-	$sql = "SELECT * FROM `jobs` INNER JOIN employers ON jobs.employer_id = employers.employer_id WHERE jobs.employer_id = $_SESSION[user_id]";
-	$result = mysqli_query($con, $sql);
+
+if (isset($_POST['submit'])) {
+	$sql = "SELECT * FROM `jobs` INNER JOIN employers ON jobs.employer_id = employers.employer_id WHERE jobs.title LIKE '%$_POST[search]%';";
+	$result = mysqli_query($con, $sql) or die (mysqli_error($con));
 	if ($result) {
 		$str = '';
 		while ($row = mysqli_fetch_array($result)) {
@@ -17,12 +18,14 @@ include_once("db/config.php");
 				<h4><a href='single.php?q=$row[job_id]'>$row[title]</a></h4>
 				<h6>Posted On <span class='dot'>·</span> $row[posted_on]</h6>
 				<p>$row[description]</p>
-				<h5><a class='candidate' href='candidates.php?q=$row[job_id]'>View Candidates</a></h5>
 			</div>
 			<div class='clearfix'> </div>
 		   </div>";
 		}
 	}
+} else {
+	$str = "No Records Matched!";
+}
  ?>
 
 <!DOCTYPE HTML>
@@ -34,8 +37,8 @@ include_once("db/config.php");
 	<link href="css/boxes.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
-<?php include('partials/navbar.php'); ?>
-<?php include('partials/banner2.php'); ?>
+	<?php include('partials/navbar.php'); ?>
+	<?php include('partials/banner2.php'); ?>
 
 <div class="container">
 	 <div class="single">  
@@ -55,6 +58,3 @@ include_once("db/config.php");
 
 </body>
 </html>	
-<style>
-	
-</style>

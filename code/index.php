@@ -25,8 +25,10 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-	<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+	<title>Easy Jobs</title>
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/banner.css" rel='stylesheet' type='text/css' />
+	<link href="css/boxes.css" rel='stylesheet' type='text/css' />
 	</head>
 <body>
 
@@ -36,65 +38,15 @@
 <div class="container">
 	 <div class="single">  
 	   <div class="job-col">
-
 			<?= $str; ?>
 			<div class="clearfix"> </div>
-
 	   </div>
    </div>
    <div class="clearfix"> </div>
+   
 </div>
 
 <?php include('partials/footer.php'); ?>
 
 </body>
-<style>
-	.single{
-	padding:5em 0;
-}
-.job-col {
-	width: 83.333%;
-	float: left;
-}
-.col_1{
-	margin-bottom:3em;
-}
-.col-4 {
-	/*width: 33.33%;*/
-	float: left;
-	padding-left: 15px;
-	padding-right: 15px;
-}
-.job-detail {
-	padding-right: 15px;
-	padding-left: 15px;
-	width: 66.66%;
-	float: left;
-}
-.img {
-	width: 100%;
-}
-.row_1 h4{
-	color: #000;
-	font-size: 2.3em;
-	font-weight: 400;
-}
-.row_1 h4 a:hover{
-	text-decoration:none;
-	color:#f15f43;
-}
-.row_1 h6{
-	color: #c5c5c5;
-    font-size: 0.75em;
-    font-weight: 300;
-    line-height: 1.8em;
-}
-.row_1 p, .single_right p{
-	color:#555;
-	font-size:0.85em;
-	font-weight:300;
-	line-height:1.8em;
-	margin-bottom: 10px;
-}
-</style>
 </html>	

@@ -1,13 +1,10 @@
- 
-
 <div>
 <ul class="navul" id="navBar">
 	<div class="flleft">
-		<li class="title"><a href="index.php"><span class="navHead1">S</span><span class="navHead2">eekers</span></a></li>
+		<li class="title"><a href="index.php"><span class="navHead1">Easy</span><span class="navHead2">Jobs</span></a></li>
         <li class="navItem"><a href="contact.php">Contact</a></li>
         <li class="navItem"><a href="about.php">About</a></li>
 	</div>
-	  
 	<div class="flright">
         <?php
             if (isAdmin() ) {
@@ -17,6 +14,7 @@
                 echo "<li class='navItem'><a href='myVacancies.php'>My Vacancies</a></li>";
             } else if (isEmployee()){
                 echo "<li class='navItem'><a href='profile.php'>My Profile</a></li>";
+                echo "<li class='navItem'><a href='appliedJobs.php'>Applied Jobs</a></li>";
             }
 
             if (isLoggedIn()) {
@@ -31,9 +29,7 @@
 </div>
 <div class="clearfix"></div>
 
-
 <style>
-	
 .navul {
     list-style-type: none;
     margin: 0;
@@ -41,23 +37,19 @@
     overflow: hidden;
     background-color: #ff704d;
 }
-
 .title{
 	margin-top:-5px;
 }
-
 .navHead1{
 	font-size:30px;
+    color: black;
 }
-
 .navHead2{
 	font-size:20px !important;
 }
-
 li {
     float: left;
 }
-
 li a {
     display: block;
     color: white;
@@ -66,16 +58,13 @@ li a {
     text-decoration: none;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    background-color: #ff0000;
+    background-color: #782f1d;
 }
-
 .active {
     background-color: #4CAF50;
 }
-
 .flleft{
     margin-left: 150px;
 }

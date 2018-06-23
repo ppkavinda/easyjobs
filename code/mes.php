@@ -9,17 +9,14 @@ adminOnly();
 
 	if(mysqli_num_rows($result)>0){
 	    $str= "<table>";
-	    $str.="<tr><th>Name</th><th>Email</th><th>Telephone</th><th>Address</th><th>Date of Birth</th><th>Gender</th></tr>";
+	    $str.="<tr><th>Name</th><th>Email</th><th>Message</th></tr>";
 	    $i = 0;
 	    while($row = mysqli_fetch_array($result)){
 	    	$i++;
-	        $str.= "<tr><td>$row[fname] $row[lname]</td>";
+	        $str.= "<tr><td>$row[name] </td>";
 	        $str.= "<td>$row[email] LKR</td>";
-	        $str.= "<td>$row[telephone]</td>";
-	        $str.= "<td>$row[address1] $row[address2]</td>";
-	        $str.= "<td>$row[dob]</td>";
-	        $str.= "<td>$row[gender]</td>";
-	        $str.= "<td><a class='dlt-button' href='delete.php?t=users&id=$row[user_id]'>DELETE</a></td>";
+	        $str.= "<td>$row[messages]</td>";
+	        $str.= "<td><a class='dlt-button' href='delete.php?t=message&id=$row[mes_id]'>DELETE</a></td>";
 	    }
 	    $str.= "</table>";
 	}else{
@@ -31,13 +28,14 @@ adminOnly();
 <html lang="en">
 
 <head>
-	<title>One Movies</title>
+	<title>Easy Jobs</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<link href="css/admin.css" rel="stylesheet" type="text/css"> 
 	<link href="css/tables.css" rel="stylesheet" type="text/css"> 
 </head>
 	
 <body>
+	
 	<?php include('partials/navbar.php'); ?>
 
 	<div class="container add-movie">

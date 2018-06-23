@@ -12,52 +12,17 @@ if ($result) {
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Location_Single :: w3layouts</title>
+	<title>Easy Jobs</title>
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
+  <link href="css/banner2.css" rel='stylesheet' type='text/css' />
+	<link href="css/profile.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
 
 <?php include('partials/navbar.php'); ?>
 <?php include('partials/banner2.php'); ?>
 <style>
-.single {
-	padding-top: 5em;
-}
-.single_right p {
-    color: #555;
-    font-size: 0.85em;
-    font-weight: 300;
-    line-height: 1.8em;
-    margin-bottom: 10px;
-}
-.description-pane {
-	width: 75%;
-	float: left;
-}
-.detail-pane {
-	width: 25%;
-	float: left;
-}
-.my_details {
-	/*width: 50%;*/
-	margin-top: 20px;
-}
-.det {
-	padding: 20px;
-	padding-left: 0;
-}
-.det span {
-	font-weight: 600;
-	width: 150px;
-	display: inline-block;
-}
-.det div {
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-.profile_pic {
-	width: 300px;
-}
+
 </style>
 
 <div class="container">
@@ -82,6 +47,8 @@ if ($result) {
 
        </div>
        <div class="clearfix"> </div>
+  <div style="height: 250px;"></div>
+       
     </div>
 </div>
 

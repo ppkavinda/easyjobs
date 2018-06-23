@@ -30,8 +30,16 @@ a {
 * {
     box-sizing: border-box;
 }
-*:before,
-*:after {
-    box-sizing: border-box;
-}
 
+/*  FOOTER  */
+  .footer{     
+  background:#212121;
+  padding:1em 0; 
+}
+.footer_text{
+  border-bottom:1px solid #999;
+}
+.footer_text p{
+  color:#999;
+  line-height:1.8em;
+}

@@ -1,11 +1,9 @@
 <?php
 session_start();
 include ('helpers/functions.php');
-
 include_once("db/config.php");
 
 $msg_for_apply = '';
-
 if (isset($_POST['apply'])) {
 	$target_dir = "uploads/cv/";
 	$target_file = $target_dir . basename($_FILES["cv"]["name"]);
@@ -34,16 +32,16 @@ if (isset($_POST['apply'])) {
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Single :: w3layouts</title>
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<title>Easy Jobs</title>
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/banner2.css" rel='stylesheet' type='text/css' />
+	<link href="css/single.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
-
 <?php include('partials/navbar.php'); ?>
-
 <?php include('partials/banner2.php'); ?>
 
-<div class="SingleContainer">
+<div class="container">
     <div class="Single">  
 	 	<div class="titleDiv title_right">
 	      	<h1><?= $row['title']; ?></h1><br>
@@ -65,7 +63,7 @@ if (isset($_POST['apply'])) {
 	      				<?= $row['job_description']; ?>
 					</p>	
 				</div>
-				<?php if (isEmployee()) echo "
+				<?php if (isEmployee()) {echo "
 					<form method='POST' action='".htmlspecialchars($_SERVER['PHP_SELF'])."'  enctype='multipart/form-data'>
 						<div class='applybtndiv'>
 							<label>Upload Your CV : </label> <input type='file' name='cv' required>
@@ -73,12 +71,17 @@ if (isset($_POST['apply'])) {
 							<input class='applybtn' type='submit' name='apply' Value='Apply'>
 						</div>
 					</form>";
+				} else if (!isLoggedIn()) {
+					echo "<h2><a href='login.php'>Login</a> or <a href='register.php'>Register</a> to Apply this job</h2>";
+				}
 				?>
 
 	      		<div class="clearfix"> </div>
 	      	</div>
 	      	</div>
 	   <div class="clearfix"> </div>
+	<div style="height: 250px;"></div>
+	   
 	</div>
 </div>
 
@@ -86,89 +89,3 @@ if (isset($_POST['apply'])) {
 
 </body>
 </html>	
-
-<style>
-	.applybtn{
-		margin-top:40px;
-		height:40px;
-		width:90px;
-		background-color: #33ccff;
-		border:none;
-		border-radius:5px;
-		font-size:15px;
-	}
-
-	.applybtn:hover{
-		background-color: #00ace6;
-	}
-
-	.SingleContainer{
-		padding-right: 15px;
-  		padding-left: 15px;
-  		margin-right: auto;
-  		margin-left: auto;
-  		width: 1170px;
-	}
-
-	.Single {
-		padding: 5em 0;
-	}
-
-	.titleDiv {
-		width: 75%;
-		position: relative;
-		min-height: 1px;
-		padding-left: 15px;
-		padding-right: 15px;
-		float: left;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-
-	.title_right h3{
-		color:#000;
-		font-size:1.5em;
-		font-weight:400;
-		margin-bottom:1em;
-	}
-
-	.divImg{
-		position: relative;
-		min-height: 1px;
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-
-	.Single_img{
-		padding-left:0;
-	}
-
-	.Single-para {
-	    padding: 0;
-	    margin: 1em 0 0 0;
-	}
-
-	.divDescript{
-		position: relative;
-		min-height: 1px;
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-	.Single_img .img {
-		float: left;
-	}
-	.jobinfo1{
-		float: left;
-		margin-left: 20px;
-		padding: 20px;
-		font-family: Tahoma, Geneva, sans-serif;
-	}
-	.jobinfo1 span {
-		font-weight: 900;
-	}
-
-	ul li{
-		list-style-type: none;;
-	}
-</style>
