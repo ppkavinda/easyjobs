@@ -4,6 +4,7 @@ include('helpers/functions.php');
 include_once("db/config.php");
 
 adminOnly();
+
 	$sql = "SELECT * FROM employers INNER JOIN users ON users.user_id = employers.employer_id";
 	$result = mysqli_query($con, $sql) or die(mysqli_error($con));
 
@@ -39,7 +40,7 @@ adminOnly();
 	<?php include('partials/navbar.php'); ?>
 
 	<div class="container add-movie">
-		<h3 style="margin-bottom: 30px;">All Employers</h3>	
+		<h3 style="margin-bottom: 30px; margin-top: 30px;">All Employers</h3>	
 	</div>
 	<div class="container">
 			<?= $str ?>

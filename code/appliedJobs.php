@@ -2,8 +2,9 @@
 session_start();
 
 include_once("helpers/functions.php");
-
 include_once("db/config.php");
+employeeOnly();
+
 	$sql = "SELECT * FROM `employee_job` INNER JOIN employees ON employees.employee_id = employee_job.employee_id INNER JOIN jobs ON employee_job.job_id = jobs.job_id WHERE employee_job.employee_id = $_SESSION[user_id]";
 	$result = mysqli_query($con, $sql);
 	if ($result) {

@@ -2,13 +2,8 @@
 session_start();
 include ('helpers/functions.php');
 include ('db/config.php');
+adminOnly();
 
-$sql = "SELECT * FROM employees INNER JOIN users ON employees.employee_id = users.user_id WHERE employee_id = " . $_SESSION['user_id'];
-$result = mysqli_query($con, $sql) or die(mysqli_error($con));
-
-if ($result) {
-	$row = mysqli_fetch_array($result);
-}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -22,10 +17,10 @@ if ($result) {
 
 	<div class="container">
 		<div class="align">
-			<a href="employees.php" class="button"><h4>View Employees</h4></a>
-			<a href="employers.php" class="button"><h4>View Employers</h4></a>
-			<a href="jobs.php" class="button"><h4>View Vacancies</h4></a>
-			<a href="mes.php" class="button"><h4>View Messages</h4></a>
+			<a href="employees.php" class="button"><h4>Employees</h4></a>
+			<a href="employers.php" class="button"><h4>Employers</h4></a>
+			<a href="jobs.php" class="button"><h4>Vacancies</h4></a>
+			<a href="mes.php" class="button"><h4>Messages</h4></a>
 		</div>
 	</div>
 	<div style="height: 250px;"></div>

@@ -2,9 +2,8 @@
 session_start();
 
 include_once("helpers/functions.php");
-guestOnly();
-
 include_once("db/config.php");
+guestOnly();
 
 if(isset($_POST["submit-employer"])){
     $target_dir = "uploads/img/";

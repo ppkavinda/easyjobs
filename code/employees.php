@@ -4,6 +4,7 @@ include('helpers/functions.php');
 include_once("db/config.php");
 
 adminOnly();
+
 	$sql = "SELECT * FROM employees INNER JOIN users ON users.user_id = employees.employee_id";
 	$result = mysqli_query($con, $sql) or die(mysqli_error($con));
 
@@ -33,7 +34,6 @@ adminOnly();
 <head>
 	<title>Easy Jobs</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	<link href="css/admin.css" rel="stylesheet" type="text/css"> 
 	<link href="css/tables.css" rel="stylesheet" type="text/css"> 
 </head>
 	
@@ -41,7 +41,7 @@ adminOnly();
 	<?php include('partials/navbar.php'); ?>
 
 	<div class="container add-movie">
-		<h3>All Employees</h3>	
+		<h3 style="margin-bottom: 30px; margin-top: 30px;">All Employees</h3>	
 	</div>
 
 	<div class="container">

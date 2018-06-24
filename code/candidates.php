@@ -2,6 +2,7 @@
 session_start();
 include('helpers/functions.php');
 include_once("db/config.php");
+employerOnly();
 
 	$sql = "SELECT * FROM `employee_job` INNER JOIN employees ON employees.employee_id = employee_job.employee_id INNER JOIN users ON employee_job.employee_id = users.user_id WHERE employee_job.job_id = $_REQUEST[q]";
 	$result = mysqli_query($con, $sql) or die(mysqli_error($con));
@@ -12,8 +13,8 @@ include_once("db/config.php");
 	    $i = 0;
 	    while($row = mysqli_fetch_array($result)){
 	    	$i++;
-	        $str.= "<tr><td>$row[fname] $row[lname]</td>";
-	        $str.= "<td>$row[email]</td>";
+	        $str.= "<tr><td><a href='profile.php?id=$row[user_id]'>$row[fname] $row[lname]</a></td>";
+	        $str.= "<td><a href='profile.php?id=$row[user_id]'>$row[email]</a></td>";
 	        $str.= "<td>$row[telephone]</td>";
 	        $str.= "<td>$row[address1] $row[address2]</td>";
 	        $str.= "<td>$row[dob]</td>";
@@ -40,7 +41,7 @@ include_once("db/config.php");
 	<?php include('partials/navbar.php'); ?>
 
 	<div class="container add-movie">
-		<h3 style="margin-bottom: 30px;">All Employees</h3>	
+		<h3 style="margin-bottom: 30px; margin-top: 30px;">All Employees</h3>	
 	</div>
 	<div class="container">
 			<?= $str ?>

@@ -2,8 +2,13 @@
 session_start();
 include ('helpers/functions.php');
 include ('db/config.php');
+regUserOnly();
 
-$sql = "SELECT * FROM employees INNER JOIN users ON employees.employee_id = users.user_id WHERE employee_id = " . $_SESSION['user_id'];
+if (isset($_REQUEST['id'])) {
+  $sql = "SELECT * FROM employees INNER JOIN users ON employees.employee_id = users.user_id WHERE employee_id = " . $_REQUEST['id'];
+} else {
+  $sql = "SELECT * FROM employees INNER JOIN users ON employees.employee_id = users.user_id WHERE employee_id = " . $_SESSION['user_id'];
+}
 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 if ($result) {
 	$row = mysqli_fetch_array($result);

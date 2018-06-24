@@ -47,13 +47,21 @@ function adminOnly () {
 		header("location:javascript://history.go(-1)");
 	}
 }
-
-function regUserOnly () {
-	if (!isLoggedIn()) {
-		header("Location: ../main/login.php");
+function employeeOnly() {
+	if ( $_SESSION['role'] != 2) {
+		header("location:javascript://history.go(-1)");
 	}
 }
-
+function employerOnly() {
+	if ( $_SESSION['role'] != 3) {
+		header("location:javascript://history.go(-1)");
+	}
+}
+function regUserOnly () {
+	if (!isLoggedIn()) {
+		header("Location: login.php");
+	}
+}
 function guestOnly () {
 	if (isLoggedIn()) {
 		header("location:javascript://history.go(-1)");
