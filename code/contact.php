@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="textbox-wrap">
                     <div class="input-group">
-                        <textarea style="height: inherit;" name="message" class="form-control" cols="30" rows="10" placeholder="Enter some description about your company"></textarea>
+                        <textarea style="height: inherit;" name="message" class="form-control" cols="30" rows="10" placeholder="Enter your message"></textarea>
                     </div>
                 </div>
 				<div class="login-btn">
