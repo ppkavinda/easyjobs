@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
 				<div class="login-btn">
-				   <input type="submit" name="submit" value="Register">
+				   <input type="submit" name="submit" value="Submit">
 				</div>
              </form>
 			<div class="clearfix"> </div>
