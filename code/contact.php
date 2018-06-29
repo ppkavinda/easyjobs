@@ -60,8 +60,6 @@ if (isset($_POST['submit'])) {
    </div>
    <div class="clearfix"> </div>
 </div>
-
-    <?php include('partials/footer.php'); ?>
-
+    <?php include('partials/footer.php');?>
 </body>
 </html>	
